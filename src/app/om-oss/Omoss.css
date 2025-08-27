@@ -1,0 +1,121 @@
+/* OmOss Page Styles */
+.about-container {
+  min-height: calc(100vh - 80px);
+  padding: 1.5rem max(0.5rem, 3vw);
+  background-color: var(--content-bg);
+  transition: background-color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.about-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header Section */
+.about-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+
+.intro-text {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  font-weight: 600;
+  color: var(--nav-hover);
+}
+
+.about-details {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Typography */
+
+
+
+/* Areas Section */
+.areas {
+  margin-top: clamp(1.2rem, 3vw, 1.8rem);
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.area-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: clamp(1rem, 2.8vw, 1.4rem);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(97, 218, 251, 0.15);
+}
+
+.area-card h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1rem, 2.6vw, 1.2rem);
+  color: var(--text-color);
+  margin: 0 0 0.35rem 0;
+}
+
+.area-card p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: clamp(0.9rem, 2.4vw, 0.98rem);
+  line-height: 1.55;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+  .areas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 1.2rem;
+  }
+
+  h1 {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .about-container {
+    padding: 1rem max(0.25rem, 2vw);
+  }
+
+  p {
+    font-size: clamp(0.85rem, 4vw, 0.95rem);
+  }
+}
+
+@media (max-width: 400px) {
+  .about-container {
+    padding: 0.8rem 0.5rem;
+  }
+}
+
+/* Ensure no overflow on all devices */
+body, html {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}

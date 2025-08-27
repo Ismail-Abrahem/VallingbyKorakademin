@@ -1,0 +1,423 @@
+/* Sidinnehåll under slideshow */
+.homeContainer {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 1.25rem);
+  box-sizing: border-box;
+}
+
+/* ========= SEKTIONSRUBRIK ========= */
+.sectionTitle {
+  color: var(--text-color);
+  font-family: Montserrat, sans-serif;
+  font-size: clamp(1.3rem, 4.2vw, 1.8rem);
+  text-align: center;
+  margin: 1.25rem 0px;
+}
+
+.introText {
+  color: var(--nav-hover);
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-weight: 600;
+}
+
+/* ========= PRIS-TEASERS ========= */
+.teasers {
+  margin-top: clamp(0.5rem, 2vw, 1rem);
+}
+
+.teaserGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.25rem);
+}
+
+.teaserCard {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: clamp(1rem, 2.8vw, 1.4rem);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(97, 218, 251, 0.15);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.teaserCard:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.teaserCard h3 {
+  color: var(--text-color);
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  margin-bottom: 0.5rem;
+}
+
+.teaserList {
+  margin: 0.25rem 0 0.9rem 1rem;
+  color: var(--text-secondary);
+  font-size: clamp(0.9rem, 2.4vw, 0.98rem);
+  list-style: none;
+  padding: 0;
+  flex-grow: 1;
+  margin-bottom: 0.8rem;
+}
+
+.teaserList li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.teaserList li::before {
+  content: "•";
+  color: var(--nav-hover);
+  font-size: 1.5rem;
+  position: absolute;
+  left: 0;
+  top: -0.2rem;
+}
+
+/* Price highlighting */
+.teaserList li span.price {
+  color: var(--nav-hover);
+  font-weight: 600;
+}
+
+.teaserCard p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: clamp(0.92rem, 2.5vw, 1rem);
+  line-height: 1.55;
+  flex-grow: 1;
+  margin-bottom: 0.8rem;
+}
+
+.btnPrimary {
+  margin-top: auto;
+  align-self: flex-start;
+  text-decoration: none;
+  background: var(--nav-hover);
+  color: #0b1a21;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(97, 218, 251, 0.3);
+  transition: transform 150ms ease, filter 150ms ease, box-shadow 150ms ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+/* ========= BENEFITS SECTION ========= */
+.benefitsSection {
+  margin: 3rem 0;
+}
+
+.benefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.benefitItem {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.benefitItem:hover {
+  transform: translateY(-5px);
+}
+
+.benefitCircle {
+  width: clamp(90px, 25vw, 120px);
+  height: clamp(90px, 25vw, 120px);
+  border-radius: 50%;
+  background: var(--card-bg);
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  border: 3px solid var(--nav-hover);
+  transition: all 0.3s ease;
+}
+
+.benefitItem:hover .benefitCircle {
+  box-shadow: 0 0 15px rgba(97, 218, 251, 0.6);
+  transform: scale(1.05);
+}
+
+.benefitImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ========= METHOD SECTION ========= */
+.methodSection {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.methodContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+
+.methodCard {
+  background: transparent;
+  perspective: 1000px;
+  cursor: pointer;
+  height: 100%;
+  min-height: 380px;
+}
+
+.methodCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s ease-in-out;
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow);
+  border-radius: 12px;
+}
+
+.methodCard.flipped .methodCardInner {
+  transform: rotateY(-180deg);
+}
+
+.methodCardFront, .methodCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 2rem;
+  box-sizing: border-box;
+  background: var(--card-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.methodCardFront {
+  justify-content: flex-start;
+}
+
+.methodIcon {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--nav-hover);
+  transition: transform 0.3s ease;
+}
+
+.methodCard:hover .methodIcon {
+  transform: scale(1.1);
+}
+
+.methodCardFront h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.methodCardFront h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: var(--nav-hover);
+}
+
+.methodCardFront p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.methodCardBack {
+  transform: rotateY(180deg);
+  padding: 2rem;
+  justify-content: center;
+  text-align: left;
+}
+
+.methodFeatures {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+}
+
+.methodFeatures li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.methodFeatures li::before {
+  content: '✓';
+  color: var(--nav-hover);
+  font-size: 1.2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: bold;
+}
+
+.flipArrow {
+  font-size: 2rem;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+  color: var(--nav-hover);
+  display: inline-block;
+  padding: 0.5rem;
+  transform: translateX(0);
+}
+
+.methodCard:hover .flipArrow {
+  transform: translateX(10px);
+}
+
+.methodCard {
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.methodCard:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.methodCard:hover .methodCardInner {
+  box-shadow: 0 8px 30px rgba(97, 218, 251, 0.3);
+}
+
+.methodConclusion {
+  text-align: center;
+  max-width: 800px;
+  margin: 2rem auto 0;
+  font-style: italic;
+  color: var(--text-secondary);
+  padding: 0 1rem;
+}
+
+/* ========= RESPONSIVE LAYOUT ========= */
+@media (max-width: 980px) {
+  .teaserGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .benefitsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .methodContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .methodCard {
+    padding: 1.5rem;
+  }
+
+  .benefitCircle {
+    width: clamp(80px, 20vw, 100px);
+    height: clamp(80px, 20vw, 100px);
+  }
+
+  .flipArrow {
+    font-size: 1.6rem;
+    margin-top: 0.8rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .teaserGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 540px) {
+  .benefitsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .benefitCircle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .methodCard {
+    padding: 1.2rem;
+  }
+  
+  .methodFeatures li {
+    font-size: 0.95rem;
+  }
+
+  .flipArrow {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 340px) {
+  .teaserCard {
+    min-height: 280px;
+  }
+  
+  .teaserList li {
+    font-size: 0.9rem;
+    padding-left: 1.4rem;
+  }
+  
+  .teaserList li::before {
+    font-size: 1.2rem;
+  }
+  
+  .btnPrimary {
+    padding: 0.8rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .benefitCircle {
+    width: 90px;
+    height: 90px;
+  }
+
+  .flipArrow {
+    font-size: 1.4rem;
+  }
+}
