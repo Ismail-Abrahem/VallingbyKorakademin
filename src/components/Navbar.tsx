@@ -31,16 +31,16 @@ export default function Navbar() {
         <div className="nav-center">
           <ul className="nav-links">
             <li className={pathname === "/" ? "current-menu-item" : ""}>
-              <Link href="/">HEM</Link>
+              <Link href="/" prefetch={true}>HEM</Link>
             </li>
             <li className={pathname === "/priser" ? "current-menu-item" : ""}>
-              <Link href="/priser">PRISER</Link>
+              <Link href="/priser" prefetch={true}>PRISER</Link>
             </li>
             <li className={pathname === "/om-oss" ? "current-menu-item" : ""}>
-              <Link href="/om-oss">OM OSS</Link>
+              <Link href="/om-oss" prefetch={true}>OM OSS</Link>
             </li>
             <li className={pathname === "/kontakta-oss" ? "current-menu-item" : ""}>
-              <Link href="/kontakta-oss">KONTAKTA OSS</Link>
+              <Link href="/kontakta-oss" prefetch={true}>KONTAKTA OSS</Link>
             </li>
           </ul>
         </div>
@@ -110,10 +110,10 @@ function NavbarClientExtras() {
       {isOpen && (
         <div className="mobile-menu active">
           <ul>
-            <li><Link href="/" onClick={toggleMenu}>HEM</Link></li>
-            <li><Link href="/priser" onClick={toggleMenu}>PRISER</Link></li>
-            <li><Link href="/om-oss" onClick={toggleMenu}>OM OSS</Link></li>
-            <li><Link href="/kontakta-oss" onClick={toggleMenu}>KONTAKTA OSS</Link></li>
+            <li><Link href="/" prefetch={true}>HEM</Link></li>
+            <li><Link href="/priser" prefetch={true}>PRISER</Link></li>
+            <li><Link href="/om-oss" prefetch={true}>OM OSS</Link></li>
+            <li><Link href="/kontakta-oss" prefetch={true}>KONTAKTA OSS</Link></li>
           </ul>
           <div className="theme-toggle mobile-toggle">
             <input

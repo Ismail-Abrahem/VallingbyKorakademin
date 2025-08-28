@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import "../styles/components/Slideshow.css";
+import Image from "next/image";
 
 export default function Slideshow({
   images = [],
@@ -58,11 +59,15 @@ export default function Slideshow({
       <div className="slides" style={{ transform: `translateX(-${index * 100}%)` }}>
         {images.map((img, i) => (
           <figure className="slide" key={i} aria-hidden={i !== index}>
-            <img 
+            <Image 
               src={img.src} 
               alt={img.alt || `Bild ${i + 1}`} 
-              loading={i === 0 ? "eager" : "lazy"} 
-              fetchPriority={i === 0 ? "high" : "auto"} 
+              fill={false} // använd width/height istället om du vill
+              width={1920}
+              height={1080}
+              priority={i === 0} // första bilden = eager + high priority
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
             />
           </figure>
         ))}

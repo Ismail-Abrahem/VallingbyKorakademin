@@ -74,6 +74,7 @@ function Benefits() {
               className={styles.benefitImage} 
               width={120} 
               height={120}
+              priority
             />
           </div>
           <h3>Mångspråkig Instruktion</h3>
@@ -88,6 +89,7 @@ function Benefits() {
               className={styles.benefitImage} 
               width={120} 
               height={120}
+              priority
             />
           </div>
           <h3>Erfarna Trafiklärare</h3>
@@ -102,6 +104,7 @@ function Benefits() {
               className={styles.benefitImage} 
               width={120} 
               height={120}
+              priority
             />
           </div>
           <h3>Flexibelt Lärande</h3>
@@ -116,6 +119,7 @@ function Benefits() {
               className={styles.benefitImage} 
               width={120} 
               height={120}
+              priority
             />
           </div>
           <h3>Modern Utrustning</h3>

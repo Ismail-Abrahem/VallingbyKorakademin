@@ -1,9 +1,54 @@
 "use client";
 
 import Head from "next/head";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./Kontaktaoss.css";
 
 export default function KontaktaOss() {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+
+  const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!form.current) return;
+
+    setIsSubmitting(true);
+
+    // Lägg till timestamp som hidden input
+    const now = new Date();
+    const timeString = now.toLocaleString("sv-SE");
+    const timeInput = document.createElement("input");
+    timeInput.type = "hidden";
+    timeInput.name = "time";
+    timeInput.value = timeString;
+    form.current.appendChild(timeInput);
+
+    try {
+      await emailjs.sendForm(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        form.current,
+        {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+        }
+      );
+
+      setSubmitStatus("success");
+      form.current.reset();
+    } catch (err) {
+      console.error("Failed to send:", err);
+      setSubmitStatus("error");
+    } finally {
+      // Ta bort hidden input igen
+      form.current.removeChild(timeInput);
+
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus(null), 5000); // rensa feedback efter 5s
+    }
+  };
+
   return (
     <>
       <Head>
@@ -28,11 +73,7 @@ export default function KontaktaOss() {
           <div className="main-content-section">
             {/* Vänster: Formulär */}
             <div className="form-section">
-              <form
-                action="/api/contact"
-                method="POST"
-                className="contact-form"
-              >
+              <form ref={form} onSubmit={sendEmail} className="contact-form">
                 <div className="form-group">
                   <input
                     type="text"
@@ -80,9 +121,20 @@ export default function KontaktaOss() {
                   <span className="input-border"></span>
                 </div>
 
-                <button type="submit" className="submit-btn">
-                  Skicka Meddelande
+                <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                  {isSubmitting ? "Skickar..." : "Skicka Meddelande"}
                 </button>
+
+                {submitStatus === 'success' && (
+                  <div className="success-message">
+                    Tack för ditt meddelande! Vi återkommer så snart vi kan.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="error-message">
+                    Något gick fel. Vänligen försök igen senare.
+                  </div>
+                )}
               </form>
             </div>
 
